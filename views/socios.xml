@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Definición de la vista Tree -->
+    <record id="biblioteca_socio_view_tree" model="ir.ui.view">
+        <field name="name">Lista de socios</field>
+        <field name="model">biblioteca.socio</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nombre"/>
+				<field name="apellidos"/>
+				<field name="identificador"/>                        
+            </tree>
+        </field>
+    </record>
+
+    <!-- Definimos como mostramos la vista en el modelo -->
+    <record id='biblioteca_socios_action' model='ir.actions.act_window'>
+        <field name="name">Socios</field>
+        <field name="res_model">biblioteca.socio</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="biblioteca_socio_view_tree" />
+    </record>
+
+    <record id="biblioteca_socio_view_form" model="ir.ui.view">
+        <field name="name">Formulario de Socio de la biblioteca</field>
+		<field name="model">biblioteca.socio</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+					<field name="nombre"/>
+					<field name="apellidos"/>
+                    <field name="identificador"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Simple menu item, sin más utilidad que la didáctica -->
+    <menuitem name="Socios" id="biblioteca_socios_menu" parent="biblioteca_base_menu" action="biblioteca_socios_action"/>
+
+</odoo>

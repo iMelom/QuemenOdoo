@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Definición de la vista Tree -->
+    <record id="biblioteca_prestado_view_tree" model="ir.ui.view">
+        <field name="name">Lista de prestados</field>
+        <field name="model">biblioteca.prestado</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="socio"/>
+				<field name="comic"/>
+				<field name="inicio"/>                        
+				<field name="fin"/>                        
+            </tree>
+        </field>
+    </record>
+
+    <!-- Definimos como mostramos la vista en el modelo -->
+    <record id='biblioteca_prestado_action' model='ir.actions.act_window'>
+        <field name="name">Prestados</field>
+        <field name="res_model">biblioteca.prestado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="biblioteca_prestado_view_tree" />
+    </record>
+
+    <record id="biblioteca_prestado_view_form" model="ir.ui.view">
+        <field name="name">Formulario de Prestados de la biblioteca</field>
+		<field name="model">biblioteca.prestado</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+					<field name="socio"/>
+                    <field name="comic"/>
+                    <field name="inicio"/>                        
+                    <field name="fin"/>  
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Simple menu item, sin más utilidad que la didáctica -->
+    <menuitem name="Prestados" id="biblioteca_prestados_menu" parent="biblioteca_base_menu" action="biblioteca_prestado_action"/>
+
+</odoo>
